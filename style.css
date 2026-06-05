@@ -38,7 +38,8 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.7;
+  line-height: 1.8;
+  font-size: 18px;
 }
 
 img {
@@ -72,9 +73,9 @@ a {
 }
 
 .nav-inner {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 48px;
   height: 70px;
   display: flex;
   align-items: center;
@@ -152,11 +153,51 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   padding: 100px 24px 60px;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #FDF0DC 0%, #FAE6C8 40%, #F5D4A0 100%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 10;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-text {
+  text-align: center;
+  width: 100%;
+}
+
+.hero-illust {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0 -160px;
+  position: relative;
+  z-index: 0;
+  width: 100%;
+}
+
+.hero-illust img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  filter: drop-shadow(4px 8px 24px rgba(75, 40, 20, 0.15));
+}
+
+.hero-cta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .hero::before {
@@ -185,15 +226,46 @@ a {
   display: none;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 600px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* 花アニメーション：パッと出てパッと消える */
+@keyframes popInOut {
+  0%   { opacity: 0; transform: scale(0.6) rotate(-10deg); }
+  8%   { opacity: 1; transform: scale(1.05) rotate(5deg); }
+  15%  { transform: scale(1) rotate(0deg); }
+  80%  { opacity: 1; transform: scale(1) rotate(8deg); }
+  92%  { opacity: 0; transform: scale(0.7) rotate(15deg); }
+  100% { opacity: 0; }
 }
+
+.petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  opacity: 0;
+  animation: popInOut ease-in-out infinite;
+}
+
+/* 左帯 6枚（left 0〜10%） */
+.petal:nth-child(1)  { top:  5%; left:  1%; width:  90px; animation-duration:  6s; animation-delay:  0s; }
+.petal:nth-child(2)  { top: 22%; left:  6%; width: 120px; animation-duration:  8s; animation-delay:  3s; }
+.petal:nth-child(3)  { top: 42%; left:  2%; width:  75px; animation-duration:  7s; animation-delay:  1s; }
+.petal:nth-child(4)  { top: 60%; left:  8%; width: 110px; animation-duration:  9s; animation-delay:  5s; }
+.petal:nth-child(5)  { top: 75%; left:  3%; width:  85px; animation-duration:  6s; animation-delay:  2s; }
+.petal:nth-child(6)  { top: 90%; left:  7%; width: 100px; animation-duration: 10s; animation-delay:  7s; }
+
+/* 右帯 6枚（right 0〜10%） */
+.petal:nth-child(7)  { top: 10%; right:  2%; left: auto; width: 105px; animation-duration:  7s; animation-delay:  4s; }
+.petal:nth-child(8)  { top: 28%; right:  7%; left: auto; width:  80px; animation-duration:  9s; animation-delay:  1s; }
+.petal:nth-child(9)  { top: 48%; right:  1%; left: auto; width: 125px; animation-duration:  6s; animation-delay:  6s; }
+.petal:nth-child(10) { top: 65%; right:  8%; left: auto; width:  90px; animation-duration:  8s; animation-delay:  0s; }
+.petal:nth-child(11) { top: 80%; right:  3%; left: auto; width: 110px; animation-duration: 10s; animation-delay:  3s; }
+.petal:nth-child(12) { top: 93%; right:  6%; left: auto; width:  75px; animation-duration:  7s; animation-delay:  8s; }
+
 
 .hero-tag {
   display: inline-block;
@@ -210,17 +282,18 @@ a {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(52px, 8vw, 80px);
+  font-size: clamp(52px, 7vw, 96px);
   font-weight: 900;
   color: var(--color-primary);
   line-height: 1.1;
   letter-spacing: 0.02em;
   margin-bottom: 20px;
   text-shadow: 2px 4px 12px rgba(139, 26, 26, 0.15);
+  white-space: nowrap;
 }
 
 .hero-catch {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.8;
   color: var(--color-text-light);
   margin-bottom: 32px;
@@ -228,19 +301,21 @@ a {
 
 .hero-instagram-wrap {
   background: white;
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  box-shadow: var(--shadow);
+  padding: 32px 24px;
   margin-bottom: 28px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
   text-align: center;
+  width: 100vw;
 }
 
 .instagram-guide {
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--color-text);
   margin-bottom: 16px;
   line-height: 1.6;
+  white-space: nowrap;
 }
 
 .btn-instagram {
@@ -304,9 +379,11 @@ a {
    Container & Section Styles
 ============================== */
 .container {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 48px;
+  position: relative;
+  z-index: 10;
 }
 
 section {
@@ -349,19 +426,26 @@ section {
 ============================== */
 .about {
   background: var(--color-surface);
+  position: relative;
 }
 
 .about-body {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
+  grid-template-columns: 2fr 3fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .about-text p {
   margin-bottom: 16px;
   color: var(--color-text);
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.9;
 }
 
@@ -387,24 +471,40 @@ section {
   position: relative;
 }
 
-.about-img-wrap::before {
-  content: '';
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  right: -16px;
-  bottom: -16px;
-  background: var(--color-accent-light);
-  border-radius: var(--radius);
-  z-index: 0;
+.about-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
-.about-img {
-  position: relative;
-  z-index: 1;
+.about-photo-item {
+  overflow: hidden;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s ease;
+}
+
+.about-photo-item:nth-child(odd):hover {
+  transform: translateY(-8px) rotate(2deg) scale(1.03);
+  box-shadow: var(--shadow-hover);
+}
+
+.about-photo-item:nth-child(even):hover {
+  transform: translateY(-8px) rotate(-2deg) scale(1.03);
+  box-shadow: var(--shadow-hover);
+}
+
+.about-photo {
   width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.about-photo-item:hover .about-photo {
+  transform: scale(1.06);
 }
 
 /* ==============================
@@ -412,6 +512,7 @@ section {
 ============================== */
 .features {
   background: var(--color-bg-dark);
+  position: relative;
 }
 
 .features-grid {
@@ -450,25 +551,18 @@ section {
 }
 
 .feature-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
 }
 
-/* 5枚目カードを中央に */
-.features-grid .feature-card:nth-child(4) {
-  grid-column: 1 / 2;
-}
-
-.features-grid .feature-card:nth-child(5) {
-  grid-column: 3 / 4;
-}
 
 /* ==============================
    Schedule Section
 ============================== */
 .schedule {
   background: var(--color-bg);
+  position: relative;
 }
 
 .schedule-card {
@@ -534,7 +628,7 @@ section {
 }
 
 .schedule-insta-text {
-  font-size: 14px;
+  font-size: 17px;
   color: var(--color-text);
   margin-bottom: 24px;
   line-height: 1.7;
@@ -567,6 +661,7 @@ section {
 ============================== */
 .contact {
   background: var(--color-bg-dark);
+  position: relative;
 }
 
 .contact-cards {
@@ -603,7 +698,7 @@ section {
 }
 
 .contact-name {
-  font-size: 16px;
+  font-size: 20px;
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 16px;
   font-weight: 500;
@@ -633,6 +728,7 @@ section {
 ============================== */
 .site-footer {
   background: #2C1A0E;
+  position: relative;
   padding: 40px 24px;
   text-align: center;
 }
@@ -690,8 +786,9 @@ section {
     padding-top: 110px;
   }
 
-  .hero-content {
-    max-width: 100%;
+  .hero-illust img {
+    width: 65%;
+    max-width: 300px;
   }
 
   .about-body {
