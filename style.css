@@ -787,12 +787,16 @@ section {
   }
 
   .hero-illust {
-    margin: 24px 0 -80px;
+    margin: 24px 0 0;
   }
 
   .hero-illust img {
     width: 85%;
     max-width: 340px;
+  }
+
+  .hero-cta {
+    margin-top: -80px;
   }
 
   .about-body {
