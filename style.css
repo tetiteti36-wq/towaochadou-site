@@ -241,7 +241,7 @@ a {
   inset: 0;
   pointer-events: none;
   z-index: 5;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .petal {
@@ -788,8 +788,8 @@ section {
   }
 
   .hero-illust {
-    margin: 24px 0 0;
-    z-index: 2;
+    margin: 24px 0 -70px;
+    z-index: 0;
   }
 
   .hero-illust img {
@@ -799,7 +799,7 @@ section {
 
   .hero-cta {
     margin-top: 0;
-    z-index: 1;
+    z-index: 2;
   }
 
   .hero-instagram-wrap {
