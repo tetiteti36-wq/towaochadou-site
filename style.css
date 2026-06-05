@@ -786,9 +786,13 @@ section {
     padding-top: 110px;
   }
 
+  .hero-illust {
+    margin: 24px 0 -80px;
+  }
+
   .hero-illust img {
-    width: 65%;
-    max-width: 300px;
+    width: 85%;
+    max-width: 340px;
   }
 
   .about-body {
