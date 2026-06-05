@@ -784,6 +784,7 @@ section {
 @media (max-width: 900px) {
   .hero {
     padding-top: 110px;
+    overflow: visible;
   }
 
   .hero-illust {
