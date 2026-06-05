@@ -788,6 +788,7 @@ section {
 
   .hero-illust {
     margin: 24px 0 0;
+    z-index: 2;
   }
 
   .hero-illust img {
@@ -796,7 +797,15 @@ section {
   }
 
   .hero-cta {
-    margin-top: -80px;
+    margin-top: 0;
+    z-index: 1;
+  }
+
+  .hero-instagram-wrap {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    border-radius: var(--radius);
   }
 
   .about-body {
